@@ -3,7 +3,7 @@ from time import sleep
 
 #funções
 def limparTela():
-    print('\n'*100)
+    print('\n'*10)
 
 def cabecalho():
     print('{:^50}'.format('=' * 50))
@@ -13,7 +13,7 @@ def cabecalho():
 def boasvindas():
     limparTela()
     cabecalho()
-    print('{:^50}'.format('Bem-vindo ao jogo da velha!!'))
+    print('{:^50}'.format('Bem-vindo ao jogo da jogoDaVelha!!'))
     print('{:^50}'.format('-' * 50))
 
 def placar(nomeP1, vitoriasP1, nomeP2, vitoriasP2, empates, simboloP1):
