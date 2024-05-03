@@ -16,8 +16,14 @@ jogoDaVelha = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 jogar = "s"
 numeroV1 = 0
 numeroV2 = 0
+numeroV3 = 0
+numeroV4 = 0
+numeroV5 = 0
+numeroV6 = 0
 jogar = 0
-numeroEmp = 0
+numeroEmp1 = 0
+numeroEmp2 = 0
+numeroEmp3 = 0
 dados = ""  # data frame
 
 
@@ -441,11 +447,11 @@ def arquivoExel(jogar):
         d = {'Partida' : [1,2,3], 'Resultado': [1,2,3], 'Ganhador 1' : [1,2,3], 'Ganhador 2' : [1,2,3], 'Empates': [1,2,3]}
         dados = pd.DataFrame(data=d)
         dados.to_excel('planilha.xlsx', index=False, engine='openpyxl')
-        dados.loc[jogar] = [jogar, ganhador, numeroV1, numeroV2, numeroEmp]
+        dados.loc[jogar] = [jogar, ganhador, numeroV1, numeroV2, numeroEmp1]
         # print(dados)
         dados.to_excel('planilha.xlsx', index=False, engine='openpyxl')
     else:
-        dados.loc[jogar] = [jogar, ganhador, numeroV1, numeroV2, numeroEmp]
+        dados.loc[jogar] = [jogar, ganhador, numeroV1, numeroV2, numeroEmp1]
         # print(dados)
         dados.to_excel('planilha.xlsx', index=False, engine='openpyxl')
 
@@ -478,34 +484,135 @@ while jogar < 100:
             # print("Empatou!")
             # print("*"*30)
             ganhador = 0
-            numeroEmp += 1
+            numeroEmp1 += 1
             arquivoExel(jogar)
             jogar += 1
             break
-    print(jogar)
+    #print(jogar)
+    # jogar = input("Deseja jogar novamente?(s/n): ")
+    reset()
+jogar = 0
+while jogar < 100:
+    while True:
+
+        # tabuleiro(jogoDaVelha)
+        #modoDificil(simbolo1, 1)
+        modoAleatorio(simbolo1, 1)
+        # tabuleiro(jogoDaVelha)
+        modoDificil(simbolo2, 2)
+        #modoAleatorio(simbolo2, 2)
+
+        if (vitoria == True):
+            # tabuleiro(jogoDaVelha)
+            # print("*"*30)
+            # print(f"Parabens '{vencedor}' foi o vencedor!")
+            # print("*"*30)
+            if ganhador == 1:
+                numeroV3 += 1
+            elif ganhador == 2:
+                numeroV4 += 1
+           # arquivoExel(jogar)
+            jogar += 1
+            break
+        if numeroDeJogadas == 9:
+            # tabuleiro(jogoDaVelha)
+            # print("*"*30)
+            # print("Empatou!")
+            # print("*"*30)
+            ganhador = 0
+            numeroEmp2 += 1
+            #arquivoExel(jogar)
+            jogar += 1
+            break
+    #print(jogar)
+    # jogar = input("Deseja jogar novamente?(s/n): ")
+    reset()
+jogar = 0
+while jogar < 100:
+    while True:
+
+        # tabuleiro(jogoDaVelha)
+        modoDificil(simbolo1, 1)
+        #modoAleatorio(simbolo1, 1)
+        # tabuleiro(jogoDaVelha)
+        modoDificil(simbolo2, 2)
+        #modoAleatorio(simbolo2, 2)
+
+        if (vitoria == True):
+            # tabuleiro(jogoDaVelha)
+            # print("*"*30)
+            # print(f"Parabens '{vencedor}' foi o vencedor!")
+            # print("*"*30)
+            if ganhador == 1:
+                numeroV5 += 1
+            elif ganhador == 2:
+                numeroV6 += 1
+           # arquivoExel(jogar)
+            jogar += 1
+            break
+        if numeroDeJogadas == 9:
+            # tabuleiro(jogoDaVelha)
+            # print("*"*30)
+            # print("Empatou!")
+            # print("*"*30)
+            ganhador = 0
+            numeroEmp3 += 1
+            arquivoExel(jogar)
+            jogar += 1
+            break
+    #print(jogar)
     # jogar = input("Deseja jogar novamente?(s/n): ")
     reset()
 
-print("Vitorias jogador 1: " + str(numeroV1))
-print("Vitorias jogador 2: " + str(numeroV2))
-print("Empates: " + str(numeroEmp))
+print("Vitorias aleatorio 1: " + str(numeroV1))
+print("Vitorias aleatorio 2: " + str(numeroV2))
+print("Empates: " + str(numeroEmp1))
 fim = time.time()
 print(f"Tempo total: {((fim - inicio)):.3f}")
+
+print("Vitorias aleatorio: " + str(numeroV3))
+print("Vitorias Brabo: " + str(numeroV4))
+print("Empates: " + str(numeroEmp2))
+fim = time.time()
+print(f"Tempo total: {((fim - inicio)):.3f}")
+
+print("Vitorias Brabo 1: " + str(numeroV5))
+print("Vitorias Brabo 2: " + str(numeroV6))
+print("Empates: " + str(numeroEmp3))
+fim = time.time()
+print(f"Tempo total: {((fim - inicio)):.3f}")
+
 tabela = pd.read_excel('planilha.xlsx')
 
 
-soma_coluna1 = numeroV1
-soma_coluna2 = numeroV2
+soma_brabo1 = numeroV1
+soma_brabo2 = numeroV2
+soma_brabo = numeroV3
+soma_aleatorio = numeroV4
+soma_aleatorio1 = numeroV5
+soma_aleatorio2 = numeroV6
+empates_brabos = numeroEmp1
+empates_brabo_aleatorio = numeroEmp2
+empates_aleatorios = numeroEmp3
+
 
 df_resultado = pd.DataFrame({
-    'Soma Ganhador 1': [soma_coluna1],
-    'Soma Ganhador 2': [soma_coluna2]
+    'Soma Brabo 1': [soma_brabo1],
+    'Soma Brabo 2': [soma_brabo2],
+    'Empates jogo 1': [numeroEmp1],
+    'Soma Brabo': [soma_brabo],
+    'Soma aleatorio': [soma_aleatorio],
+    'Empates jogo 2': [numeroEmp2],
+    'Soma aleatorio 1': [soma_aleatorio1],
+    'Soma aleatorio 2': [soma_aleatorio2],
+    'Empates jogo 3': [numeroEmp3],
 })
 
 df_resultado.to_excel('planilhaTeste.xlsx', index=False)
 print(tabela)
 print(df_resultado)
 print(tabela.iloc[99, 2])
-df_resultado.plot(kind='bar')
+df_resultado.plot(kind='bar', width=0.2)
+
 plt.show()
 
